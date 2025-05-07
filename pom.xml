@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.papeleks</groupId>
+    <artifactId>sdk-finance-stress-test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>SDK Finance Stress Test With Jmeter</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jmeter.plugin.version>3.4.0</jmeter.plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>${jmeter.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>configuration</id>
+                        <goals>
+                            <goal>configure</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <ignoreResultFailures>true</ignoreResultFailures>
+                    <testFilesDirectory>src/test/resources</testFilesDirectory>
+                    <resultsDirectory>target/jmeter/results</resultsDirectory>
+                    <generateReports>true</generateReports>
+                    <resultsFileFormat>csv</resultsFileFormat>
+                    <reportDirectory>target/jmeter/reports</reportDirectory>
+                    <errorRateThresholdInPercent>50</errorRateThresholdInPercent>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
