@@ -24,7 +24,7 @@ jobs:
           maven-version: '3.9.6'
 
       - name: Run JMeter Tests with Maven
-        run: mvn clean verify
+        run: mvn clean verify -Djmeter.testfile=SDK Finance Performance Test.jmx
         continue-on-error: true
 
       - name: Upload JMeter report
