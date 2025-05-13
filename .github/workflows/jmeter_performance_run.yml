@@ -2,6 +2,15 @@ name: Run JMeter Performance Tests
 
 on:
   workflow_dispatch:
+    inputs:
+      usersNumber:
+        default: 5
+        type: number
+        description: Number of users to run in parallel
+      duration:
+        description: Duration of the test
+        default: 600
+        type: number
 
 jobs:
   jmeter-test:
@@ -24,7 +33,7 @@ jobs:
           maven-version: '3.9.6'
 
       - name: Run JMeter Tests with Maven
-        run: mvn clean verify -Djmeter.testfile="SDK Finance Performance Test.jmx"
+        run: mvn clean verify -Djmeter.testfile="SDK Finance Performance Test.jmx" -DusersNumber=5 -Dduration=1200
         continue-on-error: true
 
       - name: Upload JMeter report

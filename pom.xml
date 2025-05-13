@@ -37,6 +37,8 @@
                 <configuration>
                     <propertiesUser>
                         <csvFilePath>${project.build.directory}/test-classes/test_data.csv</csvFilePath>
+                        <usersNumber>5</usersNumber>
+                        <duration>600</duration>
                     </propertiesUser>
                     <ignoreResultFailures>true</ignoreResultFailures>
                     <testFilesDirectory>src/test/resources</testFilesDirectory>

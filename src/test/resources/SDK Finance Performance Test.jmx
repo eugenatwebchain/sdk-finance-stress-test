@@ -30,11 +30,21 @@
             <stringProp name="Argument.value">testdata.csv</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="usersNumber" elementType="Argument">
+            <stringProp name="Argument.name">usersNumber</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="duration" elementType="Argument">
+            <stringProp name="Argument.name">duration</stringProp>
+            <stringProp name="Argument.value">600</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </elementProp>
     </TestPlan>
     <hashTree>
-      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="Session Setup">
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="Session Setup" enabled="false">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -193,10 +203,10 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Transactions Flow">
-        <intProp name="ThreadGroup.num_threads">5</intProp>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Run The Tests">
+        <stringProp name="ThreadGroup.num_threads">${__P(usersNumber)}</stringProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">600</longProp>
+        <stringProp name="ThreadGroup.duration">${__P(duration)}</stringProp>
         <longProp name="ThreadGroup.delay">5</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -219,7 +229,7 @@
           <stringProp name="variableNames">username,account_usd_id,account_eur_id,account_gbp_id</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login - Admin" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login - Admin">
           <stringProp name="HTTPSampler.domain">back-endapi.sdk.finance</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
