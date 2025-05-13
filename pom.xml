@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jmeter.plugin.version>3.4.0</jmeter.plugin.version>
-        <jmeter.testfile>SDK Finance Stress Test.jmx</jmeter.testfile>
+        <jmeter.testfile>SDK Finance Performance Test.jmx</jmeter.testfile>
     </properties>
 
     <build>
@@ -35,6 +35,9 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <propertiesUser>
+                        <csvFilePath>${project.build.directory}/test-classes/test_data.csv</csvFilePath>
+                    </propertiesUser>
                     <ignoreResultFailures>true</ignoreResultFailures>
                     <testFilesDirectory>src/test/resources</testFilesDirectory>
                     <testFilesIncluded>
